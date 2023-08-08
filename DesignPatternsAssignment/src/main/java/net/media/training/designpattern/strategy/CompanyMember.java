@@ -12,37 +12,41 @@ public abstract class CompanyMember {
     protected String mgrName;
     protected int salary;
     protected int monthsSpent;
+    ValidationStrategy strategy;
 
-    protected void validateLength(String val, int allowedLength) {
-        if (val.length() > allowedLength)
-            throw new RuntimeException("Invalid length:" + allowedLength);
-    }
+    // protected void validateLength(String val, int allowedLength) {
+    //     if (val.length() > allowedLength)
+    //         throw new RuntimeException("Invalid length:" + allowedLength);
+    // }
 
-    protected void notEmpty(String val) {
-        if (val == null || val.length() == 0)
-            throw new RuntimeException("not empty check failed for value:" + val);
-    }
+    // protected void notEmpty(String val) {
+    //     if (val == null || val.length() == 0)
+    //         throw new RuntimeException("not empty check failed for value:" + val);
+    // }
 
-    protected void atLeast(int val, int min) {
-        if (val < min)
-            throw new RuntimeException("at least check failed:" + val);
-    }
+    // protected void atLeast(int val, int min) {
+    //     if (val < min)
+    //         throw new RuntimeException("at least check failed:" + val);
+    // }
 
-    protected void atMost(int val, int max) {
-        if (val > max)
-            throw new RuntimeException("at least check failed:" + val);
-    }
+    // protected void atMost(int val, int max) {
+    //     if (val > max)
+    //         throw new RuntimeException("at least check failed:" + val);
+    // }
 
     public void setName(String name) {
-        validateLength(name, 50);
+        // int allowedLength = 50;
+        strategy = new LengthValidator(name,50);
+        strategy.validate();
+        // validateLength(name, 50);
         this.name = name;
     }
 
     public void setSalary(int salary) {
-        atLeast(salary, 1);
+        strategy = new LeastValidator(salary, 1);
     }
 
     public void setManagerName(String name) {
-        validateLength(name, 50);
+        strategy=new LengthValidator(name, 50);
     }
 }

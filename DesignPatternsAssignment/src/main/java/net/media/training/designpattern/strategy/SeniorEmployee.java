@@ -9,23 +9,24 @@ package net.media.training.designpattern.strategy;
  */
 public class SeniorEmployee extends GenericEmployee {
     private int setMaxBonus;
+    ValidationStrategy strategy;
 
     @Override
     public void setSalary(int salary) {
         super.setSalary(salary);
-        atLeast(salary, 200);
+        strategy = new LeastValidator(salary, 200);
         this.salary = salary;
     }
 
     @Override
     public void setMonthsSpent(int months) {
         super.setMonthsSpent(months);
-        atLeast(months, 60);
+        strategy = new LeastValidator(months, 60);
         this.monthsSpent = months;
     }
 
     public void setMaxBonus(int bonus) {
-        atLeast(bonus, 1);
+        strategy = new LeastValidator(bonus, 1);
         this.setMaxBonus = bonus;
     }
 }

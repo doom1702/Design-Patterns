@@ -1,5 +1,8 @@
 package net.media.training.designpattern.observer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by IntelliJ IDEA.
  * User: joelrosario
@@ -9,59 +12,92 @@ package net.media.training.designpattern.observer;
  */
 public class Sun {
     private boolean isUp;
-    private final Robot robot;
-    private final Person person;
-    private final Dog dog;
-    private final Cat cat;
+    // private final Robot robot;
+    // private final Person person;
+    // private final Dog dog;
+    // private final Cat cat;
+
+    // public Sun(Robot robot, Person person, Dog dog, Cat cat) {
+    //     this.robot = robot;
+    //     this.person = person;
+    //     this.dog = dog;
+    //     this.cat = cat;
+    // }
+
+    private List<Character_Observer> observers ;
 
     public Sun(Robot robot, Person person, Dog dog, Cat cat) {
-        this.robot = robot;
-        this.person = person;
-        this.dog = dog;
-        this.cat = cat;
+    }
+    public void addObserver(Character_Observer observer){
+        observers.add(observer);
+    }
+    public void removeObserver(Character_Observer observer){
+        observers.remove(observer);
+    }
+
+    public void noitfyObservers(boolean isSunRisen){
+        for(Character_Observer observer:observers){
+            if (observer.isOutdoors()){
+                if (isSunRisen){
+                    observer.notifySunRose();
+                }
+                else{
+                observer.notifySunSet();
+                }
+            }
+        }
     }
 
     public boolean isUp() {
         return isUp;
     }
 
-    public void set() {
+    public void set(){
         isUp = false;
-
-        if (robot.isOutdoors()) {
-            robot.notifySunSet();
-        }
-
-        if (person.isOutdoors()) {
-            person.notifySunSet();
-        }
-
-        if (dog.isOutdoors()) {
-            dog.notifySunSet();
-        }
-
-        if (cat.isOutdoors()) {
-            cat.notifySunSet();
-        }
+        noitfyObservers(isUp);
     }
-
-    public void rise() {
+    public void rise(){
         isUp = true;
-
-        if (robot.isOutdoors()) {
-            robot.notifySunRose();
-        }
-
-        if (person.isOutdoors()) {
-            person.notifySunRose();
-        }
-
-        if (dog.isOutdoors()) {
-            dog.notifySunRose();
-        }
-
-        if (cat.isOutdoors()) {
-            cat.notifySunRose();
-        }
+        noitfyObservers(isUp);
     }
+
+    // public void set() {
+    //     isUp = false;
+
+    //     if (robot.isOutdoors()) {
+    //         robot.notifySunSet();
+    //     }
+
+    //     if (person.isOutdoors()) {
+    //         person.notifySunSet();
+    //     }
+
+    //     if (dog.isOutdoors()) {
+    //         dog.notifySunSet();
+    //     }
+
+    //     if (cat.isOutdoors()) {
+    //         cat.notifySunSet();
+    //     }
+    // }
+
+    // public void rise() {
+    //     isUp = true;
+
+    //     if (robot.isOutdoors()) {
+    //         robot.notifySunRose();
+    //     }
+
+    //     if (person.isOutdoors()) {
+    //         person.notifySunRose();
+    //     }
+
+    //     if (dog.isOutdoors()) {
+    //         dog.notifySunRose();
+    //     }
+
+    //     if (cat.isOutdoors()) {
+    //         cat.notifySunRose();
+    //     }
+    // }
 }

@@ -9,6 +9,7 @@ package net.media.training.designpattern.strategy;
  */
 public class Manager extends CompanyMember {
     private String managementBand;
+    ValidationStrategy strategy;
 
     @Override
     public void setSalary(int salary) {
@@ -21,7 +22,7 @@ public class Manager extends CompanyMember {
     }
 
     public void setManagementBand(String managementBand) {
-        notEmpty(managementBand);
+        strategy = new EmptyValidator(managementBand);
         this.managementBand = managementBand;
     }
 }

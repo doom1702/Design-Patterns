@@ -23,7 +23,7 @@ public class Employee extends GenericEmployee {
     }
 
     public void setMaxAllowedLeaves(int leaves) {
-        atLeast(leaves, 1);
+        strategy = new LeastValidator(leaves, 1);
         this.maxAllowedLeaves = leaves;
     }
 }
