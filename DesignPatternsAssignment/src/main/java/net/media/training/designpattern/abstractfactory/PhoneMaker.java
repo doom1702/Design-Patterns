@@ -12,6 +12,7 @@ public abstract class PhoneMaker {
         public abstract Case toBuildPhone();
         public abstract MotherBoard tobuildMotherBoard();
         public abstract Screen toMakeScreen();
+
 //    public Case buildPhone(String phoneType) {
 //        MotherBoard motherBoard;
 //        if (phoneType.equals("Android")) {

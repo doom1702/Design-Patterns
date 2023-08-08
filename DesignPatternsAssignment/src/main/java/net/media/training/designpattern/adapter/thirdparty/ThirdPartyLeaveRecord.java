@@ -14,7 +14,7 @@ import java.util.Stack;
  * Time: 4:59:39 PM
  * To change this template use File | Settings | File Templates.
  */
-public final class ThirdPartyLeaveRecord implements LeaveRecord {
+public final class ThirdPartyLeaveRecord  {
     private Map<Employee, Integer> employees = new Hashtable<Employee, Integer>() {
         {
             put(new Employee("Bond, James"), 5);

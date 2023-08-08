@@ -8,7 +8,7 @@ package net.media.training.designpattern.adapter;
  * To change this template use File | Settings | File Templates.
  */
 public interface LeaveRecord {
-    Employee getMostAbsentEmployee();
+    String getMostAbsentEmployee();
 
     int getEmployeeAbsences(String employeeName);
 }

@@ -17,7 +17,7 @@ public class FrontDoorRegister {
     public String getDisplayWallOfShame() {
         String name = "";
 
-        name = String.valueOf(leaveRecord.getMostAbsentEmployee());
+        name = leaveRecord.getMostAbsentEmployee();
         return name + " has been the most absent employee, shame!";
     }
 }
